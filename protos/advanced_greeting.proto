@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package advanced_greeting;
+
+service AdvancedGreeter {
+  // Unary RPC
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  
+  // Server streaming RPC
+  rpc GreetManyTimes (HelloRequest) returns (stream HelloReply) {}
+  
+  // Client streaming RPC
+  rpc LongGreet (stream HelloRequest) returns (HelloReply) {}
+  
+  // Bidirectional streaming RPC
+  rpc GreetEveryone (stream HelloRequest) returns (stream HelloReply) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
